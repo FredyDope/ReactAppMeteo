@@ -32,19 +32,22 @@ class App extends React.Component {
 // api call devient json = data  
   const data = await api_call.json()
 
-  console.log(data)
+//avec cette condition if city & country === true execute on empeche l'application de planter avec des input vide
+    if ( city && country ){
+      console.log(data)
 
-//avec la methode setState nous definir la valeur du state
-    this.setState({
-      //on defini le chemin pour arriver à temperature dans l,objet data de la console 
-      temperature:data.main.temp,
-      city:data.name,
-      country:data.sys.country,
-      humidity:data.main.humidity,
-      //pour description weather objet contient un array et index 0 contient description
-      description:data.weather[0].description,
-      error: "",
-    })
+  //avec la methode setState nous definir la valeur du state
+        this.setState({
+          //on defini le chemin pour arriver à temperature dans l,objet data de la console 
+          temperature:data.main.temp,
+          city:data.name,
+          country:data.sys.country,
+          humidity:data.main.humidity,
+          //pour description weather objet contient un array et index 0 contient description
+          description:data.weather[0].description,
+          error: "",
+        })
+    }
   }
 //dans Form nous definissons une props getWeather on envoi sa valeur dans la fonction getWeather qui retourn dans Form.JS
 //nous allons passer values du state dans weather component pour les afficher sur l'ecran avec props   
