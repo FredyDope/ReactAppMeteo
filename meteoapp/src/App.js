@@ -46,7 +46,7 @@ class App extends React.Component {
       description:data.weather[0].description,
       error: "",
       })
-    } else // message d'erreur si values undefined le state error passe dans weather.js comme props
+    } else // message d'erreur si values undefined le state error passe dans weather.js comme prop
     {
       this.setState({
       temperature: undefined,
@@ -60,22 +60,39 @@ class App extends React.Component {
   }
 //dans Form nous definissons une props getWeather on envoi sa valeur dans la fonction getWeather qui retourn dans Form.JS
 //nous allons passer values du state dans weather component pour les afficher sur l'ecran avec props   
+//CSS on a placé le title cpnt sur le coté gauche 5 1er column
+//sur le coté droit cpnt form et weather 7 column suivantes
   render() {
     return (
-      <div className="App">
-      <Title />
-      <Form getWeather={this.getWeather}/>
-      <Weather 
-        temperature={this.state.temperature}
-        city={this.state.city}
-        country={this.state.country}
-        humidity={this.state.humidity}
-        description={this.state.description}
-        error={this.state.error}
-      />      
+      <div>
+        <div className="wrapper">
+          <div className="amin">
+            <div className="container ">
+              <div className="row">
+                <div className="col-xs-5 title-container">
+                  <Title />
+                </div>
+                <div className="col-xs-7 form-container">
+                  <Form getWeather={this.getWeather}/>
+                  <Weather 
+                    temperature={this.state.temperature}
+                    city={this.state.city}
+                    country={this.state.country}
+                    humidity={this.state.humidity}
+                    description={this.state.description}
+                    error={this.state.error}
+                  />
+                </div>      
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     )
   }
 }
 
 export default App
+
+
+      
